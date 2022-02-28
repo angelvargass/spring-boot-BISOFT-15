@@ -2,7 +2,7 @@ package vargas.angel.movieDatabase.controllers;
 
 import org.springframework.web.bind.annotation.*;
 import vargas.angel.movieDatabase.models.Movie;
-import vargas.angel.movieDatabase.services.MovieService;
+import vargas.angel.movieDatabase.services.implementations.MovieService;
 
 import java.util.List;
 
@@ -18,7 +18,7 @@ public class MoviesController {
 
     @PostMapping("/save")
     public Movie saveMovie(@RequestBody Movie movie) {
-        return this.movieService.saveMovie(movie);
+        return this.movieService.save(movie);
     }
 
     @GetMapping("/get-all")
