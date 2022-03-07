@@ -3,8 +3,6 @@ version: '2'
 services:
   app:
     image: '${IMAGE_NAME}'
-    build:
-      context: .
     container_name: moviedatabase-api
     ports:
       - 8081:8081
@@ -20,6 +18,3 @@ services:
     ports:
         - 5672:5672
         - 15672:15672
-    volumes:
-        - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
-        - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
