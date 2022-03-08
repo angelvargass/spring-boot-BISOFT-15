@@ -30,4 +30,9 @@ public class MoviesController {
     public Movie getByName(@PathVariable String name) {
         return this.movieService.findByName(name);
     }
+
+    @PutMapping("/update")
+    public Movie updateMovie(@RequestBody Movie movie) {
+        return this.movieService.update(movie);
+    }
 }
