@@ -26,6 +26,10 @@ jobs:
         java-version: '1.8.x'
         
     - name: Build with Maven
+      env:
+        cosmos_uri: ${{ secrets.COSMOS_URI }}
+        cosmos_key: ${{ secrets.COSMOS_KEY }}
+        cosmos_secondary_key: ${{ secrets.COSMOS_SECONDARY_KEY }}
       run: mvn package --file pom.xml
       
     - name: Build and Tag image
