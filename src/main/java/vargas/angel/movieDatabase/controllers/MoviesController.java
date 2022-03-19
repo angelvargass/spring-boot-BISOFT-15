@@ -6,6 +6,7 @@ import vargas.angel.movieDatabase.services.implementations.MovieService;
 
 import java.util.List;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/movies")
 public class MoviesController {
