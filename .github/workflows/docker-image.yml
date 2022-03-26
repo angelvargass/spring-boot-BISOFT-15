@@ -26,12 +26,16 @@ jobs:
         java-version: '1.8.x'
         
     - name: Build with Maven
+      env:
+        cosmos_uri: ${{ secrets.COSMOS_URI }}
+        cosmos_key: ${{ secrets.COSMOS_KEY }}
+        cosmos_secondary_key: ${{ secrets.COSMOS_SECONDARY_KEY }}
       run: mvn package --file pom.xml
       
     - name: Build and Tag image
       run: |
-        docker build -f ./Dockerfile -t ${{ secrets.ACR_LOGIN_SERVER }}/moviedatabase:${{ github.run_number }} .
+        docker build -f ./Dockerfile -t ${{ secrets.ACR_LOGIN_SERVER }}/moviedatabase:latest .
         
     - name: Push image
       run: |
-        docker push ${{ secrets.ACR_LOGIN_SERVER }}/moviedatabase:${{ github.run_number }}
+        docker push ${{ secrets.ACR_LOGIN_SERVER }}/moviedatabase:latest
