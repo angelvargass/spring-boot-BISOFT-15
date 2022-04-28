@@ -34,7 +34,7 @@ public class MovieService implements CrudService {
 
     @Override
     public Movie update(Movie movie) {
-        return null;
+        return this.movieRepository.save(movie);
     }
 
     @Override
