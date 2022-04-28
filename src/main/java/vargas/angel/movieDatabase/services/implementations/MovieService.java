@@ -1,5 +1,6 @@
 package vargas.angel.movieDatabase.services.implementations;
 
+import com.azure.cosmos.models.PartitionKey;
 import org.springframework.stereotype.Service;
 import vargas.angel.movieDatabase.models.Movie;
 import vargas.angel.movieDatabase.repository.MovieRepository;
@@ -39,7 +40,8 @@ public class MovieService implements CrudService {
 
     @Override
     public void delete(String id) {
-        this.movieRepository.deleteById(id);
+        PartitionKey partitionKey = new PartitionKey(id);
+        this.movieRepository.deleteById(id, partitionKey);
     }
 
     public Movie findByName(String name) {
